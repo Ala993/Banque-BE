@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class OperationRestService {
@@ -17,10 +19,11 @@ public class OperationRestService {
      * Retourner liste d'oprations avec méthode GET
      */
     @PutMapping("/versement")
-    public void verser(@RequestParam double montant, @RequestParam Long codeEmp, @RequestParam String code) {
+    public boolean verser(@RequestParam double montant, @RequestParam Long codeEmp, @RequestParam String code) {
 
         System.out.println(montant);
-        operationMetier.verser(code, montant, codeEmp);
+        return   operationMetier.verser(code, montant, codeEmp);
+
     }
 
     @PutMapping("/retrait")
@@ -42,8 +45,8 @@ public class OperationRestService {
     }
 
     @GetMapping("/operations/{codeCompte}")
-    public Page<Operation> getOperations (org.springframework.data.domain.Pageable pageable,@PathVariable String codeCompte){
-        return operationMetier.getOperations(pageable , codeCompte);
+    public List<Operation> getOperations (org.springframework.data.domain.Pageable pageable, @PathVariable String codeCompte){
+        return operationMetier.getOperations(pageable , codeCompte).getContent();
     }
 
 }

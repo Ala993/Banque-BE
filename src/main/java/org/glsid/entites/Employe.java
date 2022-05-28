@@ -22,6 +22,7 @@ private Employe EmployesSup;
 @JoinColumn(name="Num_Emp"), inverseJoinColumns=
 @JoinColumn (name="Num_Groupe"))
 private Collection<Groupe> groupes;
+
 public Employe(String nomEmploye) {
 	super();
 	this.nomEmploye = nomEmploye;

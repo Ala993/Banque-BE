@@ -1,5 +1,7 @@
 package org.glsid.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
@@ -11,7 +13,10 @@ public class Client implements Serializable{
 private Long codeClient;
 private String nomClient;
 @OneToMany (mappedBy="client",fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+@JsonIgnore
 private Collection<Compte> comptes;
+
+
 public Long getCodeClient() {
 	return codeClient;
 }

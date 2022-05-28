@@ -51,6 +51,7 @@ public class BanqueApplication implements ApplicationRunner {
 		compteCourant.setClient(client);
 		compteCourant.setEmploye(employe);
 		compteCourant.setDateCreation(new Date());
+		compteRepository.save(compteCourant);
 
 		client.setComptes(Arrays.asList(compteCourant));
 		clientRepository.save(client);

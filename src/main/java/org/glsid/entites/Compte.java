@@ -33,11 +33,9 @@ public abstract class Compte implements Serializable{
 	private Employe employe;
 	@OneToMany(mappedBy="compte")
 	private Collection<Operation> operations;
-	
-	
+
 	public Compte() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Compte(String codeCompte, Date dateCreation, double solde) {
